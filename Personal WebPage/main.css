@@ -1,0 +1,21 @@
+h1 {
+    color: pink;
+    font-size: "24px";
+    text-decoration: underline
+}
+p{      
+color: rebeccapurple;
+text-align: center;
+font-size: "19px";
+
+
+}
+
+
+body{
+    background: black
+}
+
+.textstuff{
+    color: red;
+}

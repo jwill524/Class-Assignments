@@ -7,24 +7,19 @@ var john = {
 }
 
 function getProfileUpdate(address,city){
-return {
+        return {
     address: '1111 rd',
     city: 'wholly Cow Town'
-}
+    }
 }
 
 function updateProfile(){
 return Object.assign( john,getProfileUpdate())
 }
 
-
-
+//Shows original john object
 console.log(john);
 
+//Shows updated john object
 updateProfile();
 console.log(john);
-
-
-
-
-

@@ -20,7 +20,7 @@ while (p1<3 && p2<3){
     alert("Round " + rounds);
 
     //R=0 P=1 S=2
-    if((p1choice === 'Rock' && p2choice=== 'Scissors')||(p1choice == 'Paper' && p2choice=='Rock') || (p1choice == 'Scissors' && p2choice== 'Paper') ){
+    if((p1choice == 'Rock' && p2choice == 'Scissors')||(p1choice == 'Paper' && p2choice=='Rock') || (p1choice == 'Scissors' && p2choice== 'Paper') ){
         p1++;
         alert(player1 +"wins")
         alert(player1 + " has " +p1+ " points")

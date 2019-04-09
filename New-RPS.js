@@ -1,8 +1,5 @@
 // R,P,S using Functions, objects, and properties
 
-
-
-
 //Defined a hands array
 var hand = ['Rock', 'Paper', 'Scissors'];
 // Define function getHand() that returns a hand from array using parseInt
@@ -74,45 +71,48 @@ function playGame(player1, player2, playUntil){
         playRound(player1, player2);
     }
 }
+playGame(player1, player2, 5);
+
+
+
 
 /*Define a function caled playTournament()
 Take 4 players and playUntil as arguments
 */
-function playTournament(player1, player2, player3, player4, playUntil){
-    playGame(player1, player2,5)
-    playGame(player3, player4, 5)
+// function playTournament(player1, player2, player3, player4, playUntil){
+//     playGame(player1, player2,5)
+//     playGame(player3, player4, 5)
     
-    if (player1.win == playUntil){
-      var  game1winner = player1
-    }else if(player2.win== playUntil)  {
-        var game1winner = player2
-    }
+//     if (player1.win == playUntil){
+//       var  game1winner = player1
+//     }else if(player2.win== playUntil)  {
+//         var game1winner = player2
+//     }
 
-   // console.log(game1winner)
+//    // console.log(game1winner)
    
-    if (player3.win == playUntil){
-        var  game2winner = player3
-      }else if( player4.win == playUntil) {
-           var game2winner = player4
-      }
+//     if (player3.win == playUntil){
+//         var  game2winner = player3
+//       }else if( player4.win == playUntil) {
+//            var game2winner = player4
+//       }
       
-    //console.log(game2winner)
+//     //console.log(game2winner)
     
-        //resets wins for the tournament
-        game1winner.win = 0
-        game2winner.win = 0
+//         //resets wins for the tournament
+//         game1winner.win = 0
+//         game2winner.win = 0
 
-    playGame( game1winner,game2winner, playUntil)
+//     playGame( game1winner,game2winner, playUntil)
         
        
-    if( game1winner.win == playUntil){
-        console.log(game1winner.name + " is the world Champion")
-    }else if(game2winner.win == playUntil){
-        console.log(game2winner.name + " is the world Champion")
-    }
+//     if( game1winner.win == playUntil){
+//         console.log(game1winner.name + " is the world Champion")
+//     }else if(game2winner.win == playUntil){
+//         console.log(game2winner.name + " is the world Champion")
+//     }
 
-}
-playTournament(player1, player2, player3, player4, 5)
+// }
+// playTournament(player1, player2, player3, player4, 5)
 
 
-//playGame(player1, player2, 5);

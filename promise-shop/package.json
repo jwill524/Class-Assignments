@@ -6,12 +6,16 @@
   "scripts": {
     "test": "-test",
     "start": "node index.js"
-    
   },
   "repository": {
     "type": "git",
     "url": "promise-shop"
   },
   "author": "Jonathan Williams",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "moment": "^2.24.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4"
+  }
 }

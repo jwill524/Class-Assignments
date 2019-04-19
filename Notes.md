@@ -1,6 +1,8 @@
-//Template Literal
+# April 17, 2019
 
-console.log(`Hello!`
+## Template Literal
+```JavaScript
+//console.log(`Hello!`
 `continues  on this line`); // ES6 way
 
 console.log('Hello! \n' + 'continues on this line');
@@ -20,21 +22,24 @@ console.log('Hello' + name + day + 'is my favorite day'); // ES5
 console.log(`Hello ${name} ${day} is my favorite day`); //ES6 way interpellation
 
 console.log(instructor.greet());
+```
 
+## Scope
 
-//Scope
-function foo(){
+ ```Javascript
 
+function foo() {
     let x = true;
-    if (x){
-        let usingVar = "im using var";
+    if(x) {
+      let usingLet = "I'm using let";
     }
-    console.log(usingVar);
+    console.log(usingVar); // undefined because usingLet is not in this scope
 }
-// using let gives you more control
-foo();// undefined
-
-
+ foo();
+```
+## Default Args
+  
+```JavaScript
 
 const instructors = ['Jimmy', 'Chris']
 instructors = ['Jim', 'chriss']// error, can't reassign a value to a const variable
@@ -49,7 +54,6 @@ hello('Bobby'); //Hello Bobby !
 
 hello();// Hello Mystery person !
 
-
 //ES6
 function hello(name = 'Mystery Person'){
     console.log(`Hello ${name} !`)
@@ -57,9 +61,10 @@ function hello(name = 'Mystery Person'){
 hello('Bobby'); //Hello Bobby !
 
 hello();// Hello Mystery person !
+```
+## Arrow Functions
+```JavaScript
 
-
-//Arrow functions
 const teacher = {
     name:'Jim',
     speak:function(){
@@ -73,7 +78,11 @@ const teacher = {
 }
 teacher.speak();
 // Lexical Binding - they bind to cope where defined not where they are used 
+```
 
+## Map Function
+
+```Javascript
 
 let students = [
     {name: 'Hugo'},
@@ -88,9 +97,10 @@ let names = students.map((student)=> {
     return student.name
 })
 console.log(names);
+```
 
+```JavaScript
 
-//Prototype
 function add() {
     console.log( "arguments object:", arguments);
 //turns the numbers variable into an array; making it able to use array properties
@@ -107,8 +117,11 @@ function add() {
 }
 
 console.log(add(1,2,3,4,5,6,7,8,));
+```
 
-//Rest parameter
+## Rest parameter
+
+```JavaScript
 let add = (...numbers) => {
     console.log("rest parameters", numbers);
 
@@ -129,8 +142,10 @@ function addStuff(x,y, ...z){
 }
 
 console.log(addStuff(1,2, "Hello", "World",true, 99));
+```
 
-//Spread Operator
+## Spread Operator
+```JavaScript
 let random = ["Hello", "World",true,99];
 let newArray = [1,2, ...random, 3 ];
 console.log(newArray);
@@ -152,7 +167,11 @@ let rest = (...z) => {
 
 restEx("hello", "world")
 //["hello", "world"]
+```
 
+## Array destructuring
+
+```Javascript
 var students = ["Julian", "AJ", "Matt"];
 var y = students[0]
 var x = students[1]
@@ -168,123 +187,105 @@ let [x, ,z] = students
 let [x, ...rest] = students;
 console.log(x, rest);
 //Julian ["Aj", "Matt"]
+```
+```JavaScript
+let [x, ...y] = students; // x = 'Julian', y = ['AJ', 'Matt']
+console.log(x, y); // Julian ['AJ','Matt']
+```
 
-//Deconstructor
-let completedHomework = () => {
-    return ["Julian", "AJ", "Matt"];
-}
+## Object destructuring
 
-let [x,y,z] = completedHomework();
-
-console.log(x,y,z);
-
-let instructor = {
-    name: "jimmy",
-    email: 'no@no.com'
-}
-
-let {name:x, email: y} = instructor;
-
-console.log(x);
-
+ In much the same way that arrays can be destructured, so can objects.  
+```JavaScript
 let car = {
-    make:"Honda"
+    make: 'Honda',
+    year: 2005
 }
+ let {make: x, year: y} = car; // x = 'Honda', y = 2005
+```
 
-function something({make,year = 2001}){
-    console.log(make,year);
+```JavaScript
+function something({make, year=2001}) {
+    console.log(make, year); // Honda 2005
 }
+ something(car);
+```
+## OOP
 
-something(car)
-
-//Constructor & Protypes
-function Person (name, job){
+```JavaScript
+function Person(name, job) { 
     this.name = name;
     this.job = job;
 }
+```
 
-Person.prototype.getName = function getName(){
-    return this.name
+```JavaScript
+Person.prototype.getName = function() {
+    return this.name;
 }
+ var goodGuy = new Person('Aang' /* "It's pronounced 'Ong', right?" -M. Knight Shamalan */, 'Avatar');
+// Needs the new operator so the function doesn't just run normally.
+console.log(goodGuy.getName());
+```
 
-Person.prototype.getJob = function getJob(){
-    return this.job
-}
-
-var goodGuy = new Person("Aang", "Airbender");
-
-console.log(goodGuy.getName() +" "+  goodGuy.getJob())
-
+```JavaScript
 class Person {
-    constructor (name, job){
+    constructor(name, job) {
         this.name = name;
         this.job = job;
     }
-    getName(){
+     getName() {
         return this.name;
     }
-    getjob(){
+     getJob() {
         return this.job;
     }
 }
+```
 
-let goodGuy = new Person ('Neo', 'the one ')
-console.log(goodGuy);
-
-class Person {
-    constructor (name, job){
-        this.name = name;
-        this.job = job;
-    }
-    getName(){
-        return this.name;
-    }
-    getjob(){
-        return this.job;
-    }
-}
-
-class SuperHero extends Person{
-    constructor(name, heroName, superPower){
-        super(name);
-        this.heroName = heroName;
+Classes can extend other classes to inherit their properties as well as add new ones.  
+```JavaScript
+class SuperHero extends Person {
+    constructor(name, heroName, superPower) {
+        super(name, heroName); // Calls the parent class's constructor function.
         this.superPower = superPower;
     }
-    secretIdentity(){
-        return `${this.heroName} is ${this.name}!!`
+	
+    secretIdentity() {
+        return `${this.job} is really ${this.name}!`;
     }
 }
-let batman = new SuperHero("Bruce Wayne",  "Batman")
-console.log(batman.secretIdentity())
+ let batman = new SuperHero('Bruce Wayne', 'Batman', 'money');
+console.log(batman.secretIdentity()); // Batman is really Bruce Wayne!
+```
 
+## Getters and Setters
 
-// Set &Get
-class Person{
-    constructor (name){
-        this.name=name;
+ I looked this up on MDN and it's nothing like what was taught in class, so here's how it works:  
+```JavaScript
+class Person {
+    constructor(name) {
+        this.name = name;
     }
-    get name (){
-        return this._name;
+     set job(job) {
+        if(job == 'Transportation') {
+            this.job = 'Soon to be automated away.';
+        } else {
+            this.job = job;
+        }
     }
-    set name(newName){
-        this._name = newName;
+     get job() {
+        if(this.job != 'Soon to be automated away.') {
+            return `${this.job}: safe for the forseeable future.`;
+        } else {
+            return this.job;
+        }
     }
-    
 }
-
-let goodGuy = new Person("Jim gordon")
-console.log(goodGuy.name);
-
-goodGuy.name = "James Gordon";
-console.log(goodGuy.name);
-
-
-
-let student = {name: "A-aron"};
-let status = new Map();
-
-status.set(student.name, "D-Nice");
-status.set("feeling", "churlish");
-
-console.log(status.get(student.name));
-console.log(status.get("feeling"));
+ let trucker = new Person('Jim Gordon');
+trucker.job = 'Transportation';
+console.log(trucker.job); // Soon to be automated away.
+ let programmer = new Person('Steve Wozniak');
+programmer.job = 'Programmer';
+console.log(programmer.name);
+```

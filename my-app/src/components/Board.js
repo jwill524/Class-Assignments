@@ -1,28 +1,62 @@
-import React, {Component} from 'react';
-import '../css/Board.css';
-import Notes from './Notes.js';
-
+import React, { Component } from "react";
+import "../css/Board.css";
+import Note from "./Notes";
 
 class Board extends Component {
-    constructor() {
-        super();
-    }
+  constructor() {
+    super();
+    this.state = {
+      notes: []
+    };
+  }
 
-    render(){
-        return (
-        <div>
-            <div className="div-board">
-                <div className="row">
-                <Notes title="Class Notes" body="Use constructors when extending another  class"/>
-                <Notes title= "My address" body="nunya"/>
-                <Notes title= "React Notes" body="Everything in React is component"/>
-                </div>
-            </div>
-            <div>
-                <button className="btn btn-success add-button">Add</button>
-            </div>
+  addNote() {
+    this.state.notes.push({
+      id: Date.now()
+    });
+    this.setState({
+      notes: this.state.notes
+    });
+  }
+
+  deleteNote(id) {
+    let newNoteArr = this.state.notes;
+    newNoteArr.map((note, index) => {
+      if (id === note.id) {
+        newNoteArr.splice(index, 1);
+      }
+    });
+    this.setState({
+      notes: newNoteArr
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <div className="div-board">
+          <div className="row">
+            {this.state.notes.map(note => {
+              return (
+                <Note
+                  key={note.id}
+                  id={note.id}
+                  deleteHandler={this.deleteNote.bind(this)}
+                />
+              );
+            })}
+          </div>
+          <div>
+            <button
+              className="btn btn-success add-button"
+              onClick={this.addNote.bind(this)}
+            >
+              Add
+            </button>
+          </div>
         </div>
-        )
-    }
+      </div>
+    );
+  }
 }
 export default Board;

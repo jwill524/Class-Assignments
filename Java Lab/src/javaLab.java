@@ -62,7 +62,7 @@ playStrings();
     public static void anotherMethod(){
         Integer n = 9;
         Integer x = n/2;
-//        Integer bigNum = "1000";
+//        Integer bigNum =  Integer.parseInt("1000");
 //        if(n.compareTo(bigNum)){
 //            System.out.println(x + " is half of n");
 //            System.out.println(n + " is a Big Value");
